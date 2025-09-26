@@ -5,23 +5,35 @@
   <title>Mohamed Telti - Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --bg-light: #f8f9fa;
+      --bg-dark: #222;
+      --container-light: #fff;
+      --container-dark: #2d2d2d;
+      --text-light: #222;
+      --text-dark: #f8f9fa;
+      --accent: #5865F2;
+    }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f8f9fa;
-      color: #222;
+      background: var(--bg-light);
+      color: var(--text-light);
       margin: 0;
       padding: 0;
+      transition: background 0.3s, color 0.3s;
     }
     .container {
       max-width: 700px;
       margin: 40px auto;
-      background: #fff;
+      background: var(--container-light);
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.07);
       padding: 2rem;
+      transition: background 0.3s;
     }
     h1, h2, h3 {
-      color: #2d2d2d;
+      color: var(--text-light);
+      transition: color 0.3s;
     }
     .badges a {
       margin-right: 8px;
@@ -40,12 +52,49 @@
       vertical-align: middle;
     }
     a {
-      color: #5865F2;
+      color: var(--accent);
+    }
+    .dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    .dark-mode .container {
+      background: var(--container-dark);
+    }
+    .dark-mode h1, .dark-mode h2, .dark-mode h3 {
+      color: var(--text-dark);
+    }
+    .dark-mode a {
+      color: #8ab4f8;
+    }
+    .dark-mode .badges img {
+      filter: brightness(0.9) contrast(1.4);
+    }
+    .dark-mode-toggle {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .dark-mode-toggle button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dark-mode-toggle button:hover {
+      background: #4448a0;
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="dark-mode-toggle">
+      <button id="toggleDarkMode">Switch to Dark Mode</button>
+    </div>
     <div class="section">
       <h1>Hi, I'm Mohamed Telti</h1>
       <p>I'm not here to impress with words, but I can show you how much I care about learning and building.</p>
@@ -77,7 +126,6 @@
 
     <div class="section">
       <h2>Languages &amp; Frameworks &amp; Tools &amp; Technologies</h2>
-
       <h3>Languages:</h3>
       <div class="tech-icons">
         <img src="https://skillicons.dev/icons?i=c" alt="C">
@@ -86,13 +134,11 @@
         <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
         <img src="https://skillicons.dev/icons?i=py" alt="Python">
       </div>
-
       <h3>Frameworks:</h3>
       <div class="tech-icons">
         <img src="https://skillicons.dev/icons?i=django" alt="Django">
         <img src="https://skillicons.dev/icons?i=flask" alt="Flask">
       </div>
-
       <h3>Tools &amp; Technologies:</h3>
       <div class="tech-icons">
         <img src="https://skillicons.dev/icons?i=linux" alt="Linux">
@@ -103,5 +149,6 @@
       </div>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
