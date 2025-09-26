@@ -88,6 +88,33 @@
     .dark-mode-toggle button:hover {
       background: #4448a0;
     }
+    .projects-list {
+      list-style: none;
+      padding: 0;
+    }
+    .projects-list li {
+      margin-bottom: 1.3em;
+      padding-bottom: 0.7em;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .dark-mode .projects-list li {
+      border-bottom: 1px solid #444;
+    }
+    .project-title {
+      font-weight: bold;
+      font-size: 1.05em;
+    }
+    .project-desc {
+      margin: 0.2em 0 0.3em 0;
+    }
+    .project-link {
+      font-size: 0.95em;
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    .dark-mode .project-link {
+      color: #8ab4f8;
+    }
   </style>
 </head>
 <body>
@@ -147,6 +174,47 @@
         <img src="https://skillicons.dev/icons?i=bash" alt="Bash">
         <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
       </div>
+    </div>
+    
+    <div class="section">
+      <h2>Public Projects I've Been Working On</h2>
+      <ul class="projects-list">
+        <li>
+          <span class="project-title">pipex</span>
+          <p class="project-desc">
+            Recreates the shell pipeline mechanism in C, handling process and file descriptor management.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/pipex" target="_blank">View on GitHub</a>
+          </p>
+        </li>
+        <li>
+          <span class="project-title">Philosophers</span>
+          <p class="project-desc">
+            Personal repo for experiments, small scripts, and learning notes.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/Philosophers" target="_blank">View on GitHub</a>
+          </p>
+        </li>
+        <li>
+          <span class="project-title">Roomy (XTREME0/Roomy)</span>
+          <p class="project-desc">
+            Collaborative project for room management solutions, featuring web tech and backend integration.<br>
+            <a class="project-link" href="https://github.com/XTREME0/Roomy" target="_blank">View on GitHub</a>
+          </p>
+        </li>
+        <li>
+          <span class="project-title">web-scraper</span>
+          <p class="project-desc">
+            Python tool for scraping and processing web data, focusing on modularity and extensibility.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/web-scraper" target="_blank">View on GitHub</a>
+          </p>
+        </li>
+        <li>
+          <span class="project-title">mini-bash</span>
+          <p class="project-desc">
+            Graphics and rendering experiments, inspired by the Wolfenstein engine and game concepts.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/mini-bash" target="_blank">View on GitHub</a>
+          </p>
+        </li>
+      </ul>
     </div>
   </div>
   <script src="script.js"></script>
