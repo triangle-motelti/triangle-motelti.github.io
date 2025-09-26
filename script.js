@@ -4,39 +4,83 @@ btn.addEventListener('click', function() {
   document.body.classList.toggle('dark-mode');
   if (document.body.classList.contains('dark-mode')) {
     btn.textContent = 'Switch to Light Mode';
+    // Update particles for dark mode
+    updateParticlesForDarkMode();
   } else {
     btn.textContent = 'Switch to Dark Mode';
+    // Update particles for light mode
+    updateParticlesForLightMode();
   }
 });
 
-// Simple flowing particles background (tsParticles)
-window.addEventListener("DOMContentLoaded", () => {
-  tsParticles.load("#tsparticles", {
+// Function to update particles for light mode
+function updateParticlesForLightMode() {
+  if (window.particlesInstance) {
+    window.particlesInstance.destroy();
+  }
+  loadParticles(false);
+}
+
+// Function to update particles for dark mode
+function updateParticlesForDarkMode() {
+  if (window.particlesInstance) {
+    window.particlesInstance.destroy();
+  }
+  loadParticles(true);
+}
+
+// Load particles with appropriate colors
+function loadParticles(isDarkMode) {
+  const particleColor = isDarkMode ? '#8ab4f8' : '#5865F2';
+  const linkColor = isDarkMode ? '#8ab4f8' : '#5865F2';
+  
+  window.particlesInstance = tsParticles.load("#tsparticles", {
     fullScreen: { enable: false },
     background: { color: { value: "transparent" } },
     fpsLimit: 60,
     particles: {
-      number: { value: 60, density: { enable: true, area: 800 } },
-      color: { value: "#5865F2" },
+      number: { 
+        value: 80, 
+        density: { 
+          enable: true, 
+          area: 800 
+        } 
+      },
+      color: { value: particleColor },
       shape: { type: "circle" },
-      opacity: { value: 0.5, random: true },
-      size: { value: 3, random: true },
+      opacity: { 
+        value: 0.7, 
+        random: true 
+      },
+      size: { 
+        value: 3, 
+        random: { 
+          enable: true, 
+          minimumValue: 1 
+        } 
+      },
       move: {
         enable: true,
-        speed: 1.2,
+        speed: 2,
         direction: "none",
         random: true,
         straight: false,
-        outModes: { default: "out" }
+        outModes: { default: "bounce" }
       },
       links: {
         enable: true,
-        distance: 120,
-        color: "#5865F2",
-        opacity: 0.18,
+        distance: 150,
+        color: linkColor,
+        opacity: 0.4,
         width: 1
       }
     },
     detectRetina: true
   });
+}
+
+// Initial load
+window.addEventListener("DOMContentLoaded", () => {
+  const isDarkMode = document.body.classList.contains('dark-mode');
+  loadParticles(isDarkMode);
 });
