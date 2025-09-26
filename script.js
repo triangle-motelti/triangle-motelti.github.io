@@ -1,3 +1,4 @@
+// Dark mode toggle
 const btn = document.getElementById('toggleDarkMode');
 btn.addEventListener('click', function() {
   document.body.classList.toggle('dark-mode');
@@ -8,6 +9,7 @@ btn.addEventListener('click', function() {
   }
 });
 
+// Simple flowing particles background (tsParticles)
 window.addEventListener("DOMContentLoaded", () => {
   tsParticles.load("tsparticles", {
     fullScreen: { enable: false },
@@ -37,4 +39,4 @@ window.addEventListener("DOMContentLoaded", () => {
     },
     detectRetina: true
   });
-);
+}); // <-- Fixed closing bracket here
