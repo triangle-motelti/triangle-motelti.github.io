@@ -11,7 +11,7 @@ btn.addEventListener('click', function() {
 
 // Simple flowing particles background (tsParticles)
 window.addEventListener("DOMContentLoaded", () => {
-  tsParticles.load("tsparticles", {
+  tsParticles.load("#tsparticles", {
     fullScreen: { enable: false },
     background: { color: { value: "transparent" } },
     fpsLimit: 60,
