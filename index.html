@@ -35,16 +35,18 @@
     pointer-events: none;
   }
     .container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: var(--container-light);
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
-      transition: background 0.3s;
-    }
+    max-width: 700px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s;
+    backdrop-filter: blur(10px); /* This creates the blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+  }
     h1, h2, h3 {
       color: var(--text-light);
       transition: color 0.3s;
@@ -73,7 +75,9 @@
       color: var(--text-dark);
     }
     .dark-mode .container {
-      background: var(--container-dark);
+    background: rgba(45, 45, 45, 0.7); /* Semi-transparent dark */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     }
     .dark-mode h1, .dark-mode h2, .dark-mode h3 {
       color: var(--text-dark);
