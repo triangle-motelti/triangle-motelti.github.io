@@ -39,4 +39,4 @@ window.addEventListener("DOMContentLoaded", () => {
     },
     detectRetina: true
   });
-}); // <-- Fixed closing bracket here
+});
