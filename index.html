@@ -5,187 +5,241 @@
   <title>Mohamed Telti - Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --bg-light: #f8f9fa;
+      --bg-dark: #222;
+      --container-light: #fff;
+      --container-dark: #2d2d2d;
+      --text-light: #222;
+      --text-dark: #f8f9fa;
+      --accent: #5865F2;
+    }
     body {
-      margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f8f9fa;
+      background: var(--bg-light);
+      color: var(--text-light);
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
+      position: relative;
+      overflow-x: hidden;
     }
     #tsparticles {
-      position: fixed;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+  }
+    .container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s;
+    backdrop-filter: blur(10px); /* This creates the blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+  }
+    h1, h2, h3 {
+      color: var(--text-light);
+      transition: color 0.3s;
     }
-    .sidebar {
-      width: 270px;
-      background: rgba(88,101,242,0.9);
-      color: #fff;
-      padding: 2rem 1.2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 1;
-      box-shadow: 2px 0 20px rgba(0,0,0,0.08);
-      position: relative;
+    .badges a {
+      margin-right: 8px;
+      text-decoration: none;
     }
-    .profile-pic {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: #fff;
-      margin-bottom: 1.2rem;
-      object-fit: cover;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .badges img {
+      vertical-align: middle;
+      height: 28px;
     }
-    .sidebar h2 {
-      margin: 0.5em 0 0.2em 0;
-      font-size: 1.5em;
-    }
-    .sidebar .bio {
-      font-size: 0.98em;
-      margin-bottom: 1em;
-      text-align: center;
-      color: #e5e5e5;
-    }
-    .sidebar .school {
-      font-size: 0.95em;
-      margin-bottom: 1.5em;
-      color: #c8cdfa;
-      text-align: center;
-    }
-    .sidebar .badges {
-      margin-bottom: 1.5em;
-    }
-    .sidebar .badges a {
-      margin: 0 6px;
-    }
-    .sidebar .socials {
-      margin-top: auto;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-    .sidebar .socials a img {
-      height: 26px;
-    }
-    .main-content {
-      flex: 1;
-      padding: 2.5rem 2.5rem;
-      background: rgba(255,255,255,0.85);
-      z-index: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-      overflow-x: auto;
-    }
-    .skills, .projects {
+    .section {
       margin-bottom: 2rem;
-    }
-    .skills h3, .projects h3 {
-      margin-top: 0;
-      margin-bottom: 0.8em;
-      color: #5865F2;
     }
     .tech-icons img {
       margin-right: 8px;
       height: 32px;
       vertical-align: middle;
     }
+    a {
+      color: var(--accent);
+    }
+    .dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    .dark-mode .container {
+    background: rgba(45, 45, 45, 0.7); /* Semi-transparent dark */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    }
+    .dark-mode h1, .dark-mode h2, .dark-mode h3 {
+      color: var(--text-dark);
+    }
+    .dark-mode a {
+      color: #8ab4f8;
+    }
+    .dark-mode .badges img {
+      filter: brightness(0.9) contrast(1.4);
+    }
+    .dark-mode-toggle {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .dark-mode-toggle button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dark-mode-toggle button:hover {
+      background: #4448a0;
+    }
     .projects-list {
       list-style: none;
       padding: 0;
-      margin: 0;
     }
     .projects-list li {
-      margin-bottom: 1.5em;
+      margin-bottom: 1.3em;
       padding-bottom: 0.7em;
       border-bottom: 1px solid #eaeaea;
     }
+    .dark-mode .projects-list li {
+      border-bottom: 1px solid #444;
+    }
     .project-title {
       font-weight: bold;
-      font-size: 1.07em;
-      color: #333;
+      font-size: 1.05em;
     }
     .project-desc {
-      margin: 0.15em 0 0.25em 0;
-      color: #555;
+      margin: 0.2em 0 0.3em 0;
     }
     .project-link {
-      font-size: 0.97em;
-      color: #5865F2;
+      font-size: 0.95em;
+      color: var(--accent);
       text-decoration: underline;
     }
-    @media (max-width: 950px) {
-      body { flex-direction: column; }
-      .sidebar { width: 100%; flex-direction: row; justify-content: center; box-shadow: none; }
-      .main-content { padding: 1.2rem 0.5rem; }
+    .dark-mode .project-link {
+      color: #8ab4f8;
     }
   </style>
 </head>
 <body>
+  <!-- THIS IS THE PARTICLES BACKGROUND DIV -->
   <div id="tsparticles"></div>
-  <aside class="sidebar">
-    <!-- Optional profile picture -->
-    <!-- <img src="your-photo.jpg" class="profile-pic" alt="Profile Photo" /> -->
-    <h2>Mohamed Telti</h2>
-    <div class="bio">Computer Science Student passionate about learning and building.</div>
-    <div class="school">
-      42 Network <br>
-      1337 Khouribga, Morocco
+
+  <div class="container">
+    <div class="dark-mode-toggle">
+      <button id="toggleDarkMode">Switch to Dark Mode</button>
     </div>
-    <div class="badges">
-      <a href="mailto:mteltipr03@gmail.com">
-        <img src="https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white&style=for-the-badge" alt="Gmail">
-      </a>
-      <a href="https://discord.com/users/1085692837238165585">
-        <img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Discord">
-      </a>
-    </div>
-    <div class="socials">
-      <a href="https://github.com/triangle-motelti" target="_blank"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"></a>
-      <!-- Add more social icons/links here -->
-    </div>
-  </aside>
-  <main class="main-content">
-    <section class="skills">
-      <h3>Skills & Tools</h3>
-      <div class="tech-icons">
-        <img src="https://skillicons.dev/icons?i=c,cpp,html,js,py,linux,git,github,bash,docker,django,flask" alt="Skills Icons" />
+    <div class="section">
+      <h1 align="center">Hi, I'm Mohamed Telti</h1>
+      <p>I'm not here to impress with words, but I can show you how much I care about learning and building.</p>
+      <div class="badges">
+        <a href="mailto:mteltipr03@gmail.com">
+          <img src="https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white&style=for-the-badge" alt="Gmail">
+        </a>
+        <a href="https://discord.com/users/1085692837238165585">
+          <img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Discord">
+        </a>
       </div>
-    </section>
-    <section class="projects">
-      <h3>Projects</h3>
+    </div>
+
+    <div class="section">
+      <h2>I'm a <a href="https://42.fr/le-reseau-mondial/" target="_blank">42 Network</a> Computer Science Student at <a href="https://1337.ma/en/" target="_blank">1337</a> Khouribga-Morocco Campus</h2>
+      <ul>
+        <li>I’m currently learning in my projects school:</li>
+        <ul>
+          <li>C/C++</li>
+          <li>Shell</li>
+          <li>Network &amp; system administration</li>
+          <li>Graphics</li>
+          <li>DevOps</li>
+          <li>Computer security</li>
+          <li>Algorithms &amp; AI</li>
+        </ul>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Languages &amp; Frameworks &amp; Tools &amp; Technologies</h2>
+      <h3>Languages:</h3>
+      <div class="tech-icons">
+        <img src="https://skillicons.dev/icons?i=c" alt="C">
+        <img src="https://skillicons.dev/icons?i=cpp" alt="C++">
+        <img src="https://skillicons.dev/icons?i=html" alt="HTML">
+        <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
+        <img src="https://skillicons.dev/icons?i=py" alt="Python">
+      </div>
+      <h3>Frameworks:</h3>
+      <div class="tech-icons">
+        <img src="https://skillicons.dev/icons?i=django" alt="Django">
+        <img src="https://skillicons.dev/icons?i=flask" alt="Flask">
+      </div>
+      <h3>Tools &amp; Technologies:</h3>
+      <div class="tech-icons">
+        <img src="https://skillicons.dev/icons?i=linux" alt="Linux">
+        <img src="https://skillicons.dev/icons?i=git" alt="Git">
+        <img src="https://skillicons.dev/icons?i=github" alt="GitHub">
+        <img src="https://skillicons.dev/icons?i=bash" alt="Bash">
+        <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Public Projects I've Been Working On</h2>
       <ul class="projects-list">
         <li>
           <span class="project-title">pipex</span>
-          <p class="project-desc">Recreates the shell pipeline mechanism in C, handling process and file descriptor management.</p>
-          <a class="project-link" href="https://github.com/triangle-motelti/pipex" target="_blank">View on GitHub</a>
+          <p class="project-desc">
+            Recreates the shell pipeline mechanism in C, handling process and file descriptor management.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/pipex" target="_blank">View on GitHub</a>
+          </p>
         </li>
         <li>
           <span class="project-title">Philosophers</span>
-          <p class="project-desc">A robust solution to the classic Dining Philosophers problem using multithreading and mutex synchronization.</p>
-          <a class="project-link" href="https://github.com/triangle-motelti/Philosophers" target="_blank">View on GitHub</a>
+          <p class="project-desc">
+            This project provides a robust solution to the classic Dining Philosophers problem using multithreading and mutex synchronization.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/Philosophers" target="_blank">View on GitHub</a>
+          </p>
         </li>
         <li>
           <span class="project-title">web-scraper</span>
-          <p class="project-desc">Compact Python tool for fetching web pages and extracting links, phone numbers, emails, addresses.</p>
-          <a class="project-link" href="https://github.com/triangle-motelti/web-scraper" target="_blank">View on GitHub</a>
+          <p class="project-desc">
+            Web Scraper is a compact Python tool for fetching web pages and extracting links, phone numbers, emails and addresses using requests and BeautifulSoup.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/web-scraper" target="_blank">View on GitHub</a>
+          </p>
         </li>
         <li>
           <span class="project-title">mini-bash</span>
-          <p class="project-desc">A simple Unix shell supporting commands, redirections, pipes, built-ins, env vars, and signal handling in C.</p>
-          <a class="project-link" href="https://github.com/triangle-motelti/mini-bash" target="_blank">View on GitHub</a>
+          <p class="project-desc">
+            a simple Unix shell supporting commands, redirections, pipes, built-ins, env vars, and signal handling in C.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/mini-bash" target="_blank">View on GitHub</a>
+          </p>
+        </li>
+        <li>
+          <span class="project-title">triangle-fractal</span>
+          <p class="project-desc">
+            Fractal: A C-based project that visualizes Mandelbrot, Julia, and Burning Ship fractals using MiniLibX. Features interactive zooming, panning, and color-shifting, with robust input validation and efficient rendering for exploring complex fractal patterns.<br>
+            <a class="project-link" href="https://github.com/triangle-motelti/triangle-fractal" target="_blank">View on GitHub</a>
+          </p>
         </li>
       </ul>
-    </section>
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/browser@3.3.0/tsparticles.bundle.min.js"></script>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.3.4/tsparticles.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
