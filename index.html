@@ -13,11 +13,6 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
-      <!--a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#skills">Skills</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#contact">Contact</a-->
-
       <div class="dark-mode-toggle">
         <button id="toggleDarkMode">Switch to Dark Mode</button>
       </div>
@@ -74,61 +69,32 @@
 
     <!-- Main content area -->
     <div class="main-content">
-      <!--div class="dark-mode-toggle">
-        <button id="toggleDarkMode">Switch to Dark Mode</button>
-      </div-->
-      
-      <!--div id="skills" class="section">
+      <div class="section">
         <h2>Skills & Technologies</h2>
         
-        <h3>Languages:</h3>
-        <div class="tech-icons">
-          <img src="https://skillicons.dev/icons?i=c" alt="C">
-          <img src="https://skillicons.dev/icons?i=cpp" alt="C++">
-          <img src="https://skillicons.dev/icons?i=html" alt="HTML">
-          <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
-          <img src="https://skillicons.dev/icons?i=py" alt="Python">
-        </div>
-        
-        <h3>Frameworks:</h3>
-        <div class="tech-icons">
-          <img src="https://skillicons.dev/icons?i=django" alt="Django">
-          <img src="https://skillicons.dev/icons?i=flask" alt="Flask">
-        </div>
-        
-        <h3>Tools & Technologies:</h3>
-        <div class="tech-icons">
-          <img src="https://skillicons.dev/icons?i=linux" alt="Linux">
-          <img src="https://skillicons.dev/icons?i=git" alt="Git">
-          <img src="https://skillicons.dev/icons?i=github" alt="GitHub">
-          <img src="https://skillicons.dev/icons?i=bash" alt="Bash">
-          <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
-        </div>
-      </div-->
-      <div class="section">
-    <h2>Skills & Technologies</h2>
-    
-    <div class="cpp-compact">
-        <div class="code-header">
+        <div class="cpp-compact">
+          <div class="code-header">
             <span class="filename">skills.cpp</span>
             <span class="compile-cmd">g++ -o skills skills.cpp && ./skills</span>
-        </div>
-        <pre class="cpp-small"><code>
-#include &lt;iostream&gt;
+          </div>
+          <pre class="cpp-small"><code>#include &lt;iostream&gt;
 
 int main() {
-    std::cout &lt;&lt; "Languages: C, C++, HTML, JS, Python, Bash\n";
+    std::cout &lt;&lt; "Languages:  C, C++,\n"
+              &lt;&lt; "            HTML, JS,\n" 
+              &lt;&lt; "            Python, Bash\n";
     std::cout &lt;&lt; "Frameworks: Django, Flask\n";
-    std::cout &lt;&lt; "Tools: Linux, Git, GitHub, Docker\n";
+    std::cout &lt;&lt; "Tools:      Linux, Git,\n"
+              &lt;&lt; "            GitHub, Docker\n";
     return 0;
 }</code></pre>
-        <div class="output-small">
-            <div>Languages: C, C++, HTML, JS, Python, Bash</div>
+          <div class="output-small">
+            <div>Languages:  C, C++, HTML, JS, Python, Bash</div>
             <div>Frameworks: Django, Flask</div>
-            <div>Tools: Linux, Git, GitHub, Docker</div>
+            <div>Tools:      Linux, Git, GitHub, Docker</div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
       
       <div id="projects" class="section">
         <h2>Public Projects</h2>
