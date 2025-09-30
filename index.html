@@ -68,7 +68,33 @@
     </div>
 
     <!-- Main content area -->
-    <div class="main-content">
+<div class="section">
+    <h2>Skills & Technologies</h2>
+    
+    <div class="cpp-compact">
+        <div class="code-header">
+            <span class="filename">skills.cpp</span>
+            <span class="compile-cmd">g++ -o skills skills.cpp && ./skills</span>
+        </div>
+        <pre class="cpp-small"><code><span class="cpp-preprocessor">#include &lt;iostream&gt;</span>
+
+<span class="cpp-keyword">int</span> <span class="cpp-function">main</span>() {
+    <span class="cpp-type">std::cout</span> <span class="cpp-operator">&lt;&lt;</span> <span class="cpp-string">"Languages:  C, C++,"</span>
+              <span class="cpp-operator">&lt;&lt;</span> <span class="cpp-string">"            HTML, JS,"</span> 
+              <span class="cpp-operator">&lt;&lt;</span> <span class="cpp-string">"            Python, Bash\n"</span>;
+    <span class="cpp-type">std::cout</span> <span class="cpp-operator">&lt;&lt;</span> <span class="cpp-string">"Frameworks: Django, Flask\n"</span>;
+    <span class="cpp-type">std::cout</span> <span class="cpp-operator">&lt;&lt;</span> <span class="cpp-string">"Tools:      Linux, Git,"</span>
+              <span class="cpp-operator">&lt;&lt;</span> <span class="cpp-string">"            GitHub, Docker\n"</span>;
+    <span class="cpp-keyword">return</span> <span class="cpp-number">0</span>;
+}</code></pre>
+        <div class="output-small">
+            <div><span class="cpp-output-text">Languages:  C, C++, HTML, JS, Python, Bash</span></div>
+            <div><span class="cpp-output-text">Frameworks: Django, Flask</span></div>
+            <div><span class="cpp-output-text">Tools:      Linux, Git, GitHub, Docker</span></div>
+        </div>
+    </div>
+</div>
+    <!--div class="main-content">
       <div class="section">
         <h2>Skills & Technologies</h2>
         
@@ -94,7 +120,7 @@ int main() {
             <div>Tools:      Linux, Git, GitHub, Docker</div>
           </div>
         </div>
-      </div>
+      </div-->
       
       <div id="projects" class="section">
         <h2>Public Projects</h2>
