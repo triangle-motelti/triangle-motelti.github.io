@@ -36,6 +36,59 @@
       top: 0;
       pointer-events: none;
     }
+    
+    /* Navigation Styles */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    
+    .dark-mode .navbar {
+      background: rgba(45, 45, 45, 0.9);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .nav-link {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .nav-link:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .dark-mode .nav-link {
+      color: var(--text-dark);
+    }
+    
+    .dark-mode .nav-link:hover {
+      background: #8ab4f8;
+      color: var(--bg-dark);
+    }
+
     .layout {
       display: flex;
       max-width: 1200px;
@@ -53,6 +106,8 @@
       -webkit-backdrop-filter: blur(10px);
       transition: background 0.3s;
       height: fit-content;
+      position: sticky;
+      top: 100px; /* Account for navbar height */
     }
     .main-content {
       flex: 1;
@@ -78,6 +133,7 @@
     }
     .section {
       margin-bottom: 2rem;
+      scroll-margin-top: 80px; /* For smooth scrolling with navbar */
     }
     .tech-icons img {
       margin-right: 8px;
@@ -147,6 +203,7 @@
       font-size: 0.95em;
       color: var(--accent);
       text-decoration: underline;
+      margin-right: 15px;
     }
     .dark-mode .project-link {
       color: #8ab4f8;
@@ -161,6 +218,11 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+    }
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .profile-img-placeholder {
       text-align: center;
@@ -202,6 +264,10 @@
       }
       .sidebar {
         flex: 1;
+        position: static;
+      }
+      .nav-container {
+        gap: 1rem;
       }
     }
   </style>
@@ -209,6 +275,16 @@
 <body>
   <!-- THIS IS THE PARTICLES BACKGROUND DIV -->
   <div id="tsparticles"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+  </nav>
 
   <div class="layout">
     <!-- Sidebar with personal information -->
@@ -219,12 +295,10 @@
       </div>
       
       <div class="profile-img">
-        <!--div class="profile-img-placeholder"-->
-	<img src="peng.jpg" alt="Profile Image" class="profile-img-placeholder">
-        <!--/div-->
+        <img src="peng.jpg" alt="Profile Image" class="profile-img-placeholder">
       </div>
       
-      <div class="section">
+      <div id="about" class="section">
         <h3>About Me</h3>
         <p>I'm not here to impress with words, but I can show you how much I care about learning and building.</p>
       </div>
@@ -234,9 +308,8 @@
         <p>I'm a <a href="https://42.fr/le-reseau-mondial/" target="_blank">42 Network</a> Computer Science Student at <a href="https://1337.ma/en/" target="_blank">1337</a> Khouribga-Morocco Campus</p>
       </div>
      
-
       <div class="section">
-        <h2>Current Learning</h2>
+        <h3>Current Learning</h3>
         <ul>
           <li>C/C++</li>
           <li>Shell</li>
@@ -248,7 +321,7 @@
         </ul>
       </div>
  
-      <div class="section">
+      <div id="contact" class="section">
         <h3>Contact Me</h3>
         <div class="badges">
           <a href="mailto:mteltipr03@gmail.com">
@@ -267,7 +340,7 @@
         <button id="toggleDarkMode">Switch to Dark Mode</button>
       </div>
       
-      <div class="section">
+      <div id="skills" class="section">
         <h2>Skills & Technologies</h2>
         
         <h3>Languages:</h3>
@@ -295,20 +368,7 @@
         </div>
       </div>
       
-      <!--div class="section">
-        <h2>Current Learning</h2>
-        <ul>
-          <li>C/C++</li>
-          <li>Shell</li>
-          <li>Network & system administration</li>
-          <li>Graphics</li>
-          <li>DevOps</li>
-          <li>Computer security</li>
-          <li>Algorithms & AI</li>
-        </ul>
-      </div-->
-      
-      <div class="section">
+      <div id="projects" class="section">
         <h2>Public Projects</h2>
         <ul class="projects-list">
           <li>
@@ -316,7 +376,7 @@
             <p class="project-desc">
               Pipex is a C program that mimics the behavior of Unix pipes. It allows you to connect two commands by redirecting the output of the first command to the input of the second command, reading from an input file and writing to an output file.<br>
               <a class="project-link" href="https://github.com/triangle-motelti/pipe" target="_blank">View on GitHub</a>
-	      <a class="project-link" href="https://github.com/triangle-motelti/pipe#readme" target="_blank">Read Writeup</a>
+              <a class="project-link" href="https://github.com/triangle-motelti/pipe#readme" target="_blank">Read Writeup</a>
             </p>
           </li>
           <li>
@@ -324,7 +384,7 @@
             <p class="project-desc">
               This project provides a robust solution to the classic Dining Philosophers problem using multithreading and mutex synchronization.<br>
               <a class="project-link" href="https://github.com/triangle-motelti/Philosophers" target="_blank">View on GitHub</a>
-	      <a class="project-link" href="https://github.com/triangle-motelti/Philosophers#readme" target="_blank">Read Writeup</a>
+              <a class="project-link" href="https://github.com/triangle-motelti/Philosophers#readme" target="_blank">Read Writeup</a>
             </p>
           </li>
           <li>
@@ -332,7 +392,7 @@
             <p class="project-desc">
               Web Scraper is a compact Python tool for fetching web pages and extracting links, phone numbers, emails and addresses using requests and BeautifulSoup.<br>
               <a class="project-link" href="https://github.com/triangle-motelti/web-scraper" target="_blank">View on GitHub</a>
-	      <a class="project-link" href="https://github.com/triangle-motelti/web-scraper#readme" target="_blank">Read Writeup</a>
+              <a class="project-link" href="https://github.com/triangle-motelti/web-scraper#readme" target="_blank">Read Writeup</a>
             </p>
           </li>
           <li>
@@ -340,7 +400,7 @@
             <p class="project-desc">
               a simple Unix shell supporting commands, redirections, pipes, built-ins, env vars, and signal handling in C.<br>
               <a class="project-link" href="https://github.com/triangle-motelti/mini-bash" target="_blank">View on GitHub</a>
-	      <a class="project-link" href="https://github.com/triangle-motelti/mini-bash#readme" target="_blank">Read Writeup</a>
+              <a class="project-link" href="https://github.com/triangle-motelti/mini-bash#readme" target="_blank">Read Writeup</a>
             </p>
           </li>
           <li>
@@ -348,7 +408,7 @@
             <p class="project-desc">
               Fractal: A C-based project that visualizes Mandelbrot, Julia, and Burning Ship fractals using MiniLibX. Features interactive zooming, panning, and color-shifting, with robust input validation and efficient rendering for exploring complex fractal patterns.<br>
               <a class="project-link" href="https://github.com/triangle-motelti/triangle-fractal" target="_blank">View on GitHub</a>
-	      <a class="project-link" href="https://github.com/triangle-motelti/triangle-fractal#readme" target="_blank">Read Writeup</a>
+              <a class="project-link" href="https://github.com/triangle-motelti/triangle-fractal#readme" target="_blank">Read Writeup</a>
             </p>
           </li>
         </ul>

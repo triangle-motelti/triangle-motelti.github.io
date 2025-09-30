@@ -9,6 +9,22 @@ btn.addEventListener('click', function() {
   }
 });
 
+// Smooth scrolling for navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
 // Simple particles background with fallback
 window.addEventListener("DOMContentLoaded", function() {
   // Check if tsParticles is available
