@@ -212,19 +212,33 @@ document.querySelectorAll('.readme-link').forEach(link => {
     try {
       const text = await fetchReadme(owner, repoName);
       
-      // Use marked.js to render Markdown if available, otherwise show plain text
+      // Use marked.js to render Markdown with GitHub-style options
       if (typeof marked !== 'undefined') {
-        // Configure marked for better rendering
+        // Configure marked for GitHub-style rendering
         marked.setOptions({
           breaks: true,
           gfm: true,
           headerIds: true,
-          mangle: false
+          mangle: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: true,
+          xhtml: false
         });
-        readmeContent.innerHTML = marked.parse(text);
+        
+        // Parse and render the markdown
+        const html = marked.parse(text);
+        readmeContent.innerHTML = html;
+        
+        // Add GitHub-style syntax highlighting if available
+        if (typeof hljs !== 'undefined') {
+          readmeContent.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+          });
+        }
       } else {
-        // Fallback to plain text
-        readmeContent.innerHTML = `<pre>${text}</pre>`;
+        // Fallback to plain text with monospace font
+        readmeContent.innerHTML = `<pre style="font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; white-space: pre-wrap;">${text}</pre>`;
       }
     } catch (error) {
       console.error('Error fetching README:', error);
@@ -232,7 +246,13 @@ document.querySelectorAll('.readme-link').forEach(link => {
         <div class="error-message">
           <h3>⚠️ Error Loading README</h3>
           <p>Could not fetch README.md for ${owner}/${repoName}</p>
-          <p>Please visit the <a href="https://github.com/${owner}/${repoName}" target="_blank">GitHub repository</a> directly.</p>
+          <p>This could be because:</p>
+          <ul>
+            <li>The repository doesn't have a README.md file</li>
+            <li>The repository is private</li>
+            <li>There's a network connectivity issue</li>
+          </ul>
+          <p>Please visit the <a href="https://github.com/${owner}/${repoName}" target="_blank">GitHub repository</a> directly to view the README.</p>
         </div>
       `;
     }
