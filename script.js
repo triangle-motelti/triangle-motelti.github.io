@@ -25,7 +25,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// Simple particles background with fallback
+// Particles initialization
 window.addEventListener("DOMContentLoaded", function() {
   if (typeof tsParticles !== 'undefined') {
     initializeParticles();
@@ -170,49 +170,91 @@ function createFallbackParticles() {
   });
 }
 
-// --- Readme Panel Functionality ---
+// --- README Panel Functionality ---
+
+// Function to try multiple branch names
+async function fetchReadme(owner, repo) {
+  const branches = ['main', 'master', 'HEAD']; // Try these branches in order
+  
+  for (const branch of branches) {
+    const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/README.md`;
+    try {
+      const response = await fetch(rawUrl);
+      if (response.ok) {
+        return await response.text();
+      }
+    } catch (error) {
+      console.log(`Failed to fetch from ${branch} branch:`, error);
+    }
+  }
+  
+  throw new Error('README.md not found in any common branch');
+}
 
 // Add click event listeners for all "Read Writeup" links
-document.querySelectorAll('a.project-link').forEach(link => {
-  if(link.textContent.trim() === "Read Writeup") {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = this.getAttribute('href'); // e.g., "https://github.com/triangle-motelti/pipe#readme"
+document.querySelectorAll('.readme-link').forEach(link => {
+  link.addEventListener('click', async function(e) {
+    e.preventDefault();
+    
+    const repo = this.getAttribute('data-repo');
+    if (!repo) {
+      console.error('No repository specified');
+      return;
+    }
+    
+    const [owner, repoName] = repo.split('/');
+    
+    // Show panel with loading state
+    const readmeContent = document.getElementById('readme-content');
+    readmeContent.innerHTML = '<div class="loading-spinner">Loading README...</div>';
+    document.getElementById('readme-panel').classList.add('active');
+    
+    try {
+      const text = await fetchReadme(owner, repoName);
       
-      try {
-        let url = new URL(href);
-        let pathParts = url.pathname.split('/');
-        if (pathParts.length >= 3) {
-          let owner = pathParts[1];
-          let repo = pathParts[2];
-          let rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/main/README.md`;
-          fetch(rawUrl)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error("Network response was not ok");
-              }
-              return response.text();
-            })
-            .then(text => {
-              // Display fetched markdown content
-              document.getElementById('readme-content').innerHTML = `<pre>${text}</pre>`;
-              document.getElementById('readme-panel').classList.add('active');
-            })
-            .catch(error => {
-              console.error('Error fetching README:', error);
-              document.getElementById('readme-content').innerHTML = `<p>Error fetching README.</p>`;
-              document.getElementById('readme-panel').classList.add('active');
-            });
-        }
-      } catch (err) {
-        console.error("Invalid URL in Read Writeup link", err);
+      // Use marked.js to render Markdown if available, otherwise show plain text
+      if (typeof marked !== 'undefined') {
+        // Configure marked for better rendering
+        marked.setOptions({
+          breaks: true,
+          gfm: true,
+          headerIds: true,
+          mangle: false
+        });
+        readmeContent.innerHTML = marked.parse(text);
+      } else {
+        // Fallback to plain text
+        readmeContent.innerHTML = `<pre>${text}</pre>`;
       }
-    });
+    } catch (error) {
+      console.error('Error fetching README:', error);
+      readmeContent.innerHTML = `
+        <div class="error-message">
+          <h3>⚠️ Error Loading README</h3>
+          <p>Could not fetch README.md for ${owner}/${repoName}</p>
+          <p>Please visit the <a href="https://github.com/${owner}/${repoName}" target="_blank">GitHub repository</a> directly.</p>
+        </div>
+      `;
+    }
+  });
+});
+
+// Close button handler
+document.getElementById('close-readme').addEventListener('click', function() {
+  document.getElementById('readme-panel').classList.remove('active');
+});
+
+// Close panel when clicking outside
+document.getElementById('readme-panel').addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.classList.remove('active');
   }
 });
 
-// Close button handler for the README panel
-document.getElementById('close-readme').addEventListener('click', function() {
-  document.getElementById('readme-panel').classList.remove('active');
+// Close panel with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('readme-panel').classList.remove('active');
+  }
 });
 

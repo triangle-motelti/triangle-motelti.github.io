@@ -92,7 +92,7 @@ body {
   transition: background 0.3s;
   height: fit-content;
   position: sticky;
-  top: 100px; /* Account for navbar height */
+  top: 100px;
 }
 .main-content {
   flex: 1;
@@ -118,7 +118,7 @@ h1, h2, h3 {
 }
 .section {
   margin-bottom: 2rem;
-  scroll-margin-top: 80px; /* For smooth scrolling with navbar */
+  scroll-margin-top: 80px;
 }
 .tech-icons img {
   margin-right: 8px;
@@ -293,7 +293,6 @@ a {
   line-height: 1.3;
 }
 
-/* Dark mode support for terminal */
 .dark-mode .cpp-compact {
   background: #0d1117;
   border-color: #30363d;
@@ -313,6 +312,181 @@ a {
   background: #000;
 }
 
+/* Right-Side README Panel Styles */
+#readme-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  max-width: 800px;
+  height: 100vh;
+  background: var(--container-light);
+  box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+}
+
+#readme-panel.active {
+  transform: translateX(0);
+}
+
+.readme-header {
+  position: sticky;
+  top: 0;
+  background: var(--container-light);
+  border-bottom: 2px solid var(--accent);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.readme-header h2 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+#close-readme {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#close-readme:hover {
+  background: #4448a0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#readme-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+#readme-content pre {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+}
+
+#readme-content h1, #readme-content h2, #readme-content h3 {
+  color: var(--text-light);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#readme-content h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid #e1e4e8;
+  padding-bottom: 0.5rem;
+}
+
+#readme-content h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 0.3rem;
+}
+
+#readme-content code {
+  background: #f6f8fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+}
+
+#readme-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s;
+}
+
+#readme-content a:hover {
+  border-bottom: 1px solid var(--accent);
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.error-message {
+  padding: 2rem;
+  color: #d73a49;
+  background: #ffeef0;
+  border: 1px solid #f97583;
+  border-radius: 6px;
+  margin: 1rem;
+}
+
+/* Dark mode styles for README panel */
+.dark-mode #readme-panel {
+  background: var(--container-dark);
+  box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+}
+
+.dark-mode .readme-header {
+  background: var(--container-dark);
+  border-bottom-color: #8ab4f8;
+}
+
+.dark-mode .readme-header h2 {
+  color: #8ab4f8;
+}
+
+.dark-mode #close-readme {
+  background: #8ab4f8;
+  color: var(--bg-dark);
+}
+
+.dark-mode #close-readme:hover {
+  background: #a8c7fa;
+}
+
+.dark-mode #readme-content pre {
+  background: #0d1117;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+.dark-mode #readme-content code {
+  background: #161b22;
+  color: #c9d1d9;
+}
+
+.dark-mode .error-message {
+  background: #2d1517;
+  border-color: #f97583;
+  color: #f97583;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .layout {
@@ -326,7 +500,6 @@ a {
     gap: 1rem;
   }
   
-  /* Mobile-specific terminal styles */
   .code-header {
     flex-direction: column;
     gap: 4px;
@@ -349,6 +522,23 @@ a {
     font-size: 0.6rem;
     word-break: break-all;
   }
+
+  #readme-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .readme-header {
+    padding: 1rem;
+  }
+
+  .readme-header h2 {
+    font-size: 1.2rem;
+  }
+
+  #readme-content {
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -363,38 +553,5 @@ a {
   .output-small div {
     margin-bottom: 5px;
   }
-}
-
-#readme-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 40%;
-  height: 100%;
-  background: var(--container-light);
-  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-  overflow-y: auto;
-  transform: translateX(100%);
-  transition: transform 0.3s;
-  z-index: 1500;
-  padding: 1rem;
-}
-#readme-panel.active {
-  transform: translateX(0);
-}
-#readme-panel h2 {
-  margin-top: 0;
-}
-#readme-panel button {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-}
-.dark-mode #readme-panel {
-  background: var(--container-dark);
 }
 
