@@ -364,3 +364,37 @@ a {
     margin-bottom: 5px;
   }
 }
+
+#readme-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: var(--container-light);
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s;
+  z-index: 1500;
+  padding: 1rem;
+}
+#readme-panel.active {
+  transform: translateX(0);
+}
+#readme-panel h2 {
+  margin-top: 0;
+}
+#readme-panel button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.dark-mode #readme-panel {
+  background: var(--container-dark);
+}
+
