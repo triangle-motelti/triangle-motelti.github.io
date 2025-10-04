@@ -785,7 +785,7 @@ a {
 <button class="button-33" role="button">Button 33</button> */
 
 /* CSS */
-.button-33 {
+/* .button-33 {
   background-color: hsl(144, 100%, 99%);
   border-radius: 100px;
   box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
@@ -807,6 +807,66 @@ a {
 .button-33:hover {
   box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
+} */
+
+
+ .button-33 {
+  background-color: var(--container-light);
+  border-radius: 100px;
+  box-shadow: 
+    rgba(88, 101, 242, .2) 0 -25px 18px -14px inset,
+    rgba(88, 101, 242, .15) 0 1px 2px,
+    rgba(88, 101, 242, .15) 0 2px 4px,
+    rgba(88, 101, 242, .15) 0 4px 8px,
+    rgba(88, 101, 242, .15) 0 8px 16px,
+    rgba(88, 101, 242, .15) 0 16px 32px;
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
+.button-33:hover {
+  box-shadow: 
+    rgba(88, 101, 242, .35) 0 -25px 18px -14px inset,
+    rgba(88, 101, 242, .25) 0 1px 2px,
+    rgba(88, 101, 242, .25) 0 2px 4px,
+    rgba(88, 101, 242, .25) 0 4px 8px,
+    rgba(88, 101, 242, .25) 0 8px 16px,
+    rgba(88, 101, 242, .25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+  background-color: var(--bg-light);
+}
 
+/* Dark mode styles for button-33 */
+.dark-mode .button-33 {
+  background-color: var(--container-dark);
+  color: #8ab4f8;
+  box-shadow: 
+    rgba(138, 180, 248, .2) 0 -25px 18px -14px inset,
+    rgba(138, 180, 248, .15) 0 1px 2px,
+    rgba(138, 180, 248, .15) 0 2px 4px,
+    rgba(138, 180, 248, .15) 0 4px 8px,
+    rgba(138, 180, 248, .15) 0 8px 16px,
+    rgba(138, 180, 248, .15) 0 16px 32px;
+}
+
+.dark-mode .button-33:hover {
+  background-color: var(--bg-dark);
+  box-shadow: 
+    rgba(138, 180, 248, .35) 0 -25px 18px -14px inset,
+    rgba(138, 180, 248, .25) 0 1px 2px,
+    rgba(138, 180, 248, .25) 0 2px 4px,
+    rgba(138, 180, 248, .25) 0 4px 8px,
+    rgba(138, 180, 248, .25) 0 8px 16px,
+    rgba(138, 180, 248, .25) 0 16px 32px;
+}
