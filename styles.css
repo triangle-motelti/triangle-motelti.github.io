@@ -105,8 +105,8 @@ body {
   top: 100px;
 }
 .github-navbar button {
-  background: var(--accent);
-  color: #474747;
+  background: #474747;
+  color: white;
   border: none;
   border-radius: 6px;
   padding: 10px;
