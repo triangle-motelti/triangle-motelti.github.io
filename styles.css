@@ -18,7 +18,36 @@
   --github-dark-text: #c9d1d9;
   --github-dark-code-bg: #161b22;
   --github-dark-code-border: #30363d;
+
+  --btn-radius: 6px;
+  --btn-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  --btn-primary-bg: var(--accent);
+  --btn-primary-fg: #fff;
+  --btn-primary-hover: #4448a0;
+
+  /* Neutral gray button for GitHub link */
+  --btn-secondary-bg: #6c757d;
+  --btn-secondary-fg: #fff;
+  --btn-secondary-hover: #5a6268;
+
+  /* Dark mode overrides for secondary */
+  --dm-btn-secondary-bg: #8a9096;
+  --dm-btn-secondary-fg: #111;
+  --dm-btn-secondary-hover: #7f868c;
 }
+
+.github-navbar button {
+  background: #474747;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
 body {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-light);
@@ -115,16 +144,50 @@ body {
   transition: background 0.2s;
 } */
 
-.github-navbar button a {
-  color: gray;          /* Make link text gray */
-  text-decoration: none; /* Remove underline if you want */
-  display: inline-block; /* Helps with clickable area */
-  width: 100%;           /* Fill the button */
-  height: 100%;          /* Fill the button */
-  padding: 10px;         /* Match button padding */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: var(--btn-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--btn-shadow);
+  transition: background-color .2s ease, color .2s ease, transform .1s ease;
+  user-select: none;
+  line-height: 1;
 }
-.dark-mode .github-navbar button a {
-  color: lightgray;
+.btn:active { transform: translateY(1px); }
+
+/* Primary (blue) button */
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-fg);
+}
+.btn-primary:hover {
+  background: var(--btn-primary-hover);
+  color: var(--btn-primary-fg);
+}
+.btn-primary:visited { color: var(--btn-primary-fg); }
+
+/* Secondary (gray) button for GitHub link */
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-fg);
+}
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover);
+  color: var(--btn-secondary-fg);
+}
+.btn-secondary:visited { color: var(--btn-secondary-fg); }
+
+/* Make sure link buttons don't get default link styles */
+.github-navbar a.btn {
+  text-decoration: none;
 }
 .main-content {
   flex: 1;
@@ -208,6 +271,16 @@ a {
 }
 .dark-mode .projects-list li {
   border-bottom: 1px solid #444;
+}
+
+/* Dark mode overrides for gray GitHub button */
+.dark-mode .github-navbar .btn.btn-secondary {
+  background: var(--dm-btn-secondary-bg);
+  color: var(--dm-btn-secondary-fg);
+}
+.dark-mode .github-navbar .btn.btn-secondary:hover {
+  background: var(--dm-btn-secondary-hover);
+  color: var(--dm-btn-secondary-fg);
 }
 .project-title {
   font-weight: bold;
