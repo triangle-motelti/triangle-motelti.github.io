@@ -104,7 +104,7 @@ body {
   position: sticky;
   top: 100px;
 }
-.github-navbar button {
+/* .github-navbar button {
   background: #474747;
   color: white;
   border: none;
@@ -113,6 +113,18 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+} */
+
+.github-navbar button a {
+  color: gray;          /* Make link text gray */
+  text-decoration: none; /* Remove underline if you want */
+  display: inline-block; /* Helps with clickable area */
+  width: 100%;           /* Fill the button */
+  height: 100%;          /* Fill the button */
+  padding: 10px;         /* Match button padding */
+}
+.dark-mode .github-navbar button a {
+  color: lightgray;
 }
 .main-content {
   flex: 1;
