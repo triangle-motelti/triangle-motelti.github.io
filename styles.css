@@ -809,6 +809,7 @@ a {
   transform: scale(1.05) rotate(-1deg);
 } */
 
+
 .button-33 {
   background-color: var(--container-light);
   border-radius: 100px;
@@ -832,6 +833,9 @@ a {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  /* Add min-height to prevent layout shifts on mobile */
+  min-height: 36px;
+  line-height: 1.2;
 }
 
 .button-33:hover {
@@ -868,4 +872,118 @@ a {
     rgba(138, 180, 248, .25) 0 4px 8px,
     rgba(138, 180, 248, .25) 0 8px 16px,
     rgba(138, 180, 248, .25) 0 16px 32px;
+}
+
+/* Mobile responsiveness for button-33 */
+@media (max-width: 768px) {
+  .button-33 {
+    padding: 6px 16px;
+    font-size: 14px;
+    min-height: 32px;
+    /* Reduce shadow intensity for better mobile performance */
+    box-shadow: 
+      rgba(88, 101, 242, .15) 0 -20px 14px -12px inset,
+      rgba(88, 101, 242, .12) 0 1px 2px,
+      rgba(88, 101, 242, .12) 0 2px 4px,
+      rgba(88, 101, 242, .12) 0 4px 8px,
+      rgba(88, 101, 242, .12) 0 8px 16px;
+  }
+
+  .button-33:hover {
+    /* Reduce hover transform for better mobile UX */
+    transform: scale(1.02) rotate(-0.5deg);
+    box-shadow: 
+      rgba(88, 101, 242, .25) 0 -20px 14px -12px inset,
+      rgba(88, 101, 242, .2) 0 1px 2px,
+      rgba(88, 101, 242, .2) 0 2px 4px,
+      rgba(88, 101, 242, .2) 0 4px 8px,
+      rgba(88, 101, 242, .2) 0 8px 16px;
+  }
+
+  /* Dark mode mobile adjustments */
+  .dark-mode .button-33 {
+    box-shadow: 
+      rgba(138, 180, 248, .15) 0 -20px 14px -12px inset,
+      rgba(138, 180, 248, .12) 0 1px 2px,
+      rgba(138, 180, 248, .12) 0 2px 4px,
+      rgba(138, 180, 248, .12) 0 4px 8px,
+      rgba(138, 180, 248, .12) 0 8px 16px;
+  }
+
+  .dark-mode .button-33:hover {
+    transform: scale(1.02) rotate(-0.5deg);
+    box-shadow: 
+      rgba(138, 180, 248, .25) 0 -20px 14px -12px inset,
+      rgba(138, 180, 248, .2) 0 1px 2px,
+      rgba(138, 180, 248, .2) 0 2px 4px,
+      rgba(138, 180, 248, .2) 0 4px 8px,
+      rgba(138, 180, 248, .2) 0 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-33 {
+    padding: 5px 12px;
+    font-size: 13px;
+    min-height: 28px;
+    /* Further reduce shadows for small screens */
+    box-shadow: 
+      rgba(88, 101, 242, .12) 0 -15px 10px -8px inset,
+      rgba(88, 101, 242, .1) 0 1px 2px,
+      rgba(88, 101, 242, .1) 0 2px 4px,
+      rgba(88, 101, 242, .1) 0 4px 8px;
+    /* Ensure text doesn't wrap */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+  }
+
+  .button-33:hover {
+    /* Minimal transform on very small screens */
+    transform: scale(1.01);
+    box-shadow: 
+      rgba(88, 101, 242, .2) 0 -15px 10px -8px inset,
+      rgba(88, 101, 242, .15) 0 1px 2px,
+      rgba(88, 101, 242, .15) 0 2px 4px,
+      rgba(88, 101, 242, .15) 0 4px 8px;
+  }
+
+  /* Dark mode for very small screens */
+  .dark-mode .button-33 {
+    box-shadow: 
+      rgba(138, 180, 248, .12) 0 -15px 10px -8px inset,
+      rgba(138, 180, 248, .1) 0 1px 2px,
+      rgba(138, 180, 248, .1) 0 2px 4px,
+      rgba(138, 180, 248, .1) 0 4px 8px;
+  }
+
+  .dark-mode .button-33:hover {
+    transform: scale(1.01);
+    box-shadow: 
+      rgba(138, 180, 248, .2) 0 -15px 10px -8px inset,
+      rgba(138, 180, 248, .15) 0 1px 2px,
+      rgba(138, 180, 248, .15) 0 2px 4px,
+      rgba(138, 180, 248, .15) 0 4px 8px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .button-33 {
+    /* Increase touch target size */
+    min-height: 44px;
+    padding: 8px 18px;
+  }
+  
+  .button-33:hover {
+    /* Remove hover effects on touch devices */
+    transform: none;
+  }
+  
+  .button-33:active {
+    /* Add active state for touch feedback */
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
 }
