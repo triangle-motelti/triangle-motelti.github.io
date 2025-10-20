@@ -19,6 +19,7 @@ let pointerX,
 let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
 
 let touchInput = false;
+let interactivityEnabled = false;
 
 function isMobileViewport() {
   try {
@@ -37,7 +38,7 @@ function configureInteraction() {
 
   const mobile = isMobileViewport();
 
-  if (!mobile) {
+  if (!mobile && interactivityEnabled) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mouseleave', onMouseLeave, { passive: true });
     window.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -48,6 +49,29 @@ function configureInteraction() {
     touchInput = false;
   }
 }
+
+function toggleInteractivity() {
+  interactivityEnabled = !interactivityEnabled;
+  const toggleButton = document.getElementById('toggleStars');
+  
+  if (interactivityEnabled) {
+    toggleButton.classList.add('active');
+    velocity.z = 0.0005;
+  } else {
+    toggleButton.classList.remove('active');
+    velocity.x = 0;
+    velocity.y = 0;
+    velocity.tx = 0;
+    velocity.ty = 0;
+    velocity.z = 0;
+    pointerX = null;
+    pointerY = null;
+  }
+  
+  configureInteraction();
+}
+
+window.toggleInteractivity = toggleInteractivity;
 
 generate();
 resize();

@@ -1,16 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
     const nameElement = document.querySelector('.name');
-    const originalText = nameElement.textContent;
-    nameElement.textContent = '';
+    const originalText = nameElement ? nameElement.textContent : '';
     
-    let i = 0;
-    function typeWriter() {
-        if (i < originalText.length) {
-            nameElement.textContent += originalText.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
+    if (nameElement) {
+        nameElement.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                nameElement.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
         }
+        
+        setTimeout(typeWriter, 500);
     }
-    
-    setTimeout(typeWriter, 500);
+
+    const toggleButton = document.getElementById('toggleStars');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            if (window.toggleInteractivity) {
+                window.toggleInteractivity();
+            }
+        });
+        
+        toggleButton.classList.remove('active');
+    }
 });
