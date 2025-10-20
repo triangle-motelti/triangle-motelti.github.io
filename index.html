@@ -1,167 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mohamed Telti - Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <!-- Add marked.js for Markdown rendering -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOHAMED TELTI - software engineer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div id="tsparticles"></div>
-
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="dark-mode-toggle">
-        <button id="toggleDarkMode">Switch to Dark Mode</button>
-      </div>
-      <div class="github-navbar">
-        <a class="btn btn-secondary" href="https://github.com/triangle-motelti" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </div>
-  </nav>
-
-  <div class="layout">
-    <div class="sidebar">
-      <div class="name-title">
-        <h1><a href="https://github.com/triangle-motelti" target="_blank">Mohamed Telti</a></h1>
-        <p>Computer Science Student</p>
-	<p>mteltipr03@gmail.com</p>
-      </div>
-      
-      <!--div class="profile-img">
-        <img src="peng.jpg" alt="Profile Image" class="profile-img-placeholder">
-      </div-->
-      
-      <div id="about" class="section">
-        <h3>About Me</h3>
-        <p>I'm not here to impress with words, but I can show you how much I care about learning and building.</p>
-      </div>
-      
-      <div class="section">
-        <h3>Education</h3>
-        <p>I'm a <a href="https://42.fr/le-reseau-mondial/" target="_blank">42 Network</a> Computer Science Student at <a href="https://1337.ma/en/" target="_blank">1337</a> Khouribga-Morocco Campus</p>
-      </div>
-     
-      <div class="section">
-        <h3>Current Learning</h3>
-        <ul>
-          <li>C/C++</li>
-          <li>Shell</li>
-          <li>Network & system administration</li>
-          <li>Graphics</li>
-          <li>DevOps</li>
-          <li>Computer security</li>
-          <li>Algorithms & AI</li>
-        </ul>
-      </div>
- 
-      <div id="contact" class="section">
-        <h3>Contact Me</h3>
-        <div class="badges">
-          <a href="mailto:mteltipr03@gmail.com">
-            <img src="https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white&style=for-the-badge" alt="Gmail">
-          </a>
-          <a href="https://discord.com/users/1085692837238165585">
-            <img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Discord">
-          </a>
+  <canvas id="starfield"></canvas>
+    <header>
+        <div class="container">
+            <div class="logo">m0<span>telti</span></div>
         </div>
-      </div>
-    </div>
+    </header>
 
-    <div class="main-content">
-      <div class="section">
-        <h2>Skills & Technologies</h2>
-        
-        <div class="cpp-compact">
-          <div class="code-header">
-            <span class="filename">skills.cpp</span>
-            <span class="compile-cmd">g++ -o skills skills.cpp && ./skills</span>
-          </div>
-          <pre class="cpp-small"><code>#include &lt;iostream&gt;
-
-int main() {
-    std::cout &lt;&lt; "Languages:  C, C++, HTML, JS, CSS, Python, Bash\n";
-    std::cout &lt;&lt; "Frameworks: Django, Flask\n";
-    std::cout &lt;&lt; "Tools:      Linux, Git, GitHub, Docker\n";
-    return 0;
-}</code></pre>
-          <div class="output-small">
-            <div>Languages:  C, C++, HTML, JS, CSS, Python, Bash</div>
-            <div>Frameworks: Django, Flask</div>
-            <div>Tools:      Linux, Git, GitHub, Docker</div>
-          </div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="intro">Hi, my name is</p>
+                <h1 class="name">mohamed telti</h1>
+                <h2 class="subtitle">software engineer | Building with C/C++</h2>
+                <p class="description">
+                    I specialize in building scalable software and solving web issues. 
+                    Focused on improving system reliability and performance, with expertise in DevOps practices to streamline deployments. 
+                    Continuously learning to stay ahead in problem-solving and tech innovations
+                 and studying at 42 School to enhance my skills.
+                </p>
+                
+                <div class="badges">
+                    <div class="badge">
+                        <i class="fas fa-wrench"></i>
+                        <span>Problem Solving</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-terminal"></i>
+                        <span>Solving Web Issues</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-sitemap"></i>
+                        <span>DevOps</span>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="mailto:mteltipr03@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get In Touch</a>
+                    <a href="https://github.com/triangle-motelti" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View My Work</a>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <div id="projects" class="section">
-        <h2><a href="https://github.com/triangle-motelti?tab=repositories" target="_blank">Public Projects</a></h2>
-        <ul class="projects-list">
-          <li>
-            <span class="project-title">Push-Swap</span>
-            <p class="project-desc">
-              Push Swap is a project that requires sorting a stack of integers using a restricted set of operations and an auxiliary stack.<br>
-              <a class="project-link button-33" role="button" href="https://github.com/triangle-motelti/push-swap" target="_blank">View on GitHub</a>
-              <a class="project-link readme-link button-33" role="button" href="#" data-repo="triangle-motelti/push-swap">Read Writeup</a>
-            </p>
-          </li>
-          <li>
-            <span class="project-title">pipe</span>
-            <p class="project-desc">
-              Pipex is a C program that mimics the behavior of Unix pipes. It allows you to connect two commands by redirecting the output of the first command to the input of the second command, reading from an input file and writing to an output file.<br>
-              <a class="project-link button-33" role="button" href="https://github.com/triangle-motelti/pipe" target="_blank">View on GitHub</a>
-              <a class="project-link readme-link button-33" role="button" href="#" data-repo="triangle-motelti/pipe">Read Writeup</a>
-            </p>
-          </li>
-          <li>
-            <span class="project-title">Philosophers</span>
-            <p class="project-desc">
-              This project provides a robust solution to the classic Dining Philosophers problem using multithreading and mutex synchronization.<br>
-              <a class="project-link button-33" role="button" href="https://github.com/triangle-motelti/Philosophers" target="_blank">View on GitHub</a>
-              <a class="project-link readme-link button-33" role="button" href="#" data-repo="triangle-motelti/Philosophers">Read Writeup</a>
-            </p>
-          </li>
-          <li>
-            <span class="project-title">web-scraper</span>
-            <p class="project-desc">
-              Web Scraper is a compact Python tool for fetching web pages and extracting links, phone numbers, emails and addresses using requests and BeautifulSoup.<br>
-              <a class="project-link button-33" role="button" href="https://github.com/triangle-motelti/web-scraper" target="_blank">View on GitHub</a>
-              <a class="project-link readme-link button-33" role="button" href="#" data-repo="triangle-motelti/web-scraper">Read Writeup</a>
-            </p>
-          </li>
-          <li>
-            <span class="project-title">mini-bash</span>
-            <p class="project-desc">
-              A simple Unix shell supporting commands, redirections, pipes, built-ins, env vars, and signal handling in C.<br>
-              <a class="project-link button-33" role="button" href="https://github.com/triangle-motelti/mini-bash" target="_blank">View on GitHub</a>
-              <a class="project-link readme-link button-33" role="button" href="#" data-repo="triangle-motelti/mini-bash">Read Writeup</a>
-            </p>
-          </li>
-          <li>
-            <span class="project-title">triangle-fractal</span>
-            <p class="project-desc">
-              Fractal: A C-based project that visualizes Mandelbrot, Julia, and Burning Ship fractals using MiniLibX. Features interactive zooming, panning, and color-shifting, with robust input validation and efficient rendering for exploring complex fractal patterns.<br>
-              <a class="project-link button-33" role="button" href="https://github.com/triangle-motelti/triangle-fractal" target="_blank">View on GitHub</a>
-              <a class="project-link readme-link button-33" role="button" href="#" data-repo="triangle-motelti/triangle-fractal">Read Writeup</a>
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Right-Side README Panel -->
-  <div id="readme-panel">
-    <div class="readme-header">
-      <h2>README</h2>
-      <button class="btn btn-primary" id="close-readme">✕ Close</button>
-    </div>
-    <div id="readme-content"></div>
-  </div>
+    <footer>
+        <div class="container">
+            <p>© 2025 triangle-motelti. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/triangle-motelti" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/Mohamed_seee?t=vFQ8h8g-q1OSXy4eykzoig&s=33" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:mteltipr03@gmail.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.3.4/tsparticles.bundle.min.js"></script>
-  <script src="script.js"></script>
+    <script src="stars.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 
