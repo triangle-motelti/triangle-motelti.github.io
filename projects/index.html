@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects — Mohamed Telti</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+
+  <header>
+    <div class="container">
+      <div class="logo"><a href="/" style="color:inherit; text-decoration:none;">m0<span>telti</span></a></div>
+      <div class="header-right">
+        <a href="/" class="btn btn-secondary" aria-label="Back to home">Home</a>
+        <button id="toggleStars" class="star-toggle" aria-label="Toggle star interactivity">
+          <i class="fas fa-star"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="intro">My work</p>
+        <h1 class="name">Projects</h1>
+        <p class="description">A curated list of projects and exercises. Click a card to open the repository.</p>
+
+        <div class="projects-grid" aria-live="polite">
+          <article class="project-card" tabindex="0">
+            <a class="project-link" href="https://github.com/triangle-motelti/mini-bash" target="_blank" rel="noopener noreferrer" aria-label="Open on GitHub">
+              <h3 class="project-title">mini-bash</h3>
+              <p class="project-excerpt">a simple Unix shell supporting commands, redirections, pipes, built-ins, env vars, and signal handling in C.</p>
+            </a>
+            <div class="project-tags" aria-hidden="true">
+              <span class="tag">C</span>
+              <span class="tag">Data Structures</span>
+              <span class="tag">Memory Management</span>
+            </div>
+          </article>
+
+          <article class="project-card" tabindex="0">
+            <a class="project-link" href="https://github.com/triangle-motelti/Philosophers" target="_blank" rel="noopener noreferrer" aria-label="Open on GitHub">
+              <h3 class="project-title">Philosophers</h3>
+              <p class="project-excerpt">This project provides a robust solution to the classic Dining Philosophers problem using multithreading and mutex synchronization.</p>
+            </a>
+            <div class="project-tags" aria-hidden="true">
+              <span class="tag">C</span>
+              <span class="tag">Multithreading</span>
+              <span class="tag">concurrency</span>
+            </div>
+          </article>
+
+          <article class="project-card" tabindex="0">
+            <a class="project-link" href="https://github.com/triangle-motelti/push-swap" target="_blank" rel="noopener noreferrer" aria-label="Open on GitHub">
+              <h3 class="project-title">Push-Swap</h3>
+              <p class="project-excerpt">Push Swap is a project that requires sorting a stack of integers using a restricted set of operations and an auxiliary stack.</p>
+            </a>
+            <div class="project-tags" aria-hidden="true">
+              <span class="tag">C</span>
+              <span class="tag">Sorting Algorithms</span>
+              <span class="tag">Efficient sorting</span>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0">
+            <a class="project-link" href="https://github.com/triangle-motelti/triangle-fractal" target="_blank" rel="noopener noreferrer" aria-label="Open on GitHub">
+              <h3 class="project-title">Fractal</h3>
+              <p class="project-excerpt">Fractal: A C-based project that visualizes Mandelbrot, Julia, and Burning Ship fractals using MiniLibX.</p>
+            </a>
+            <div class="project-tags" aria-hidden="true">
+              <span class="tag">C</span>
+              <span class="tag">Fractals Algorithms</span>
+              <span class="tag">Graphics</span>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0">
+            <a class="project-link" href="https://github.com/triangle-motelti/web-scraper" target="_blank" rel="noopener noreferrer" aria-label="Open on GitHub">
+              <h3 class="project-title">Web-Scraper</h3>
+              <p class="project-excerpt">Web Scraper is a compact Python tool for fetching web pages and extracting links, phone numbers, emails and addresses using requests and BeautifulSoup.</p>
+            </a>
+            <div class="project-tags" aria-hidden="true">
+              <span class="tag">Python</span>
+              <span class="tag">Scraper</span>
+              <span class="tag">Http Request</span>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="margin-top:2rem;">
+          <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+        <div class="container">
+            <p>© 2025 triangle-motelti. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/triangle-motelti" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/Mohamed_seee?t=vFQ8h8g-q1OSXy4eykzoig&s=33" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:mteltipr03@gmail.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+  <script src="../stars.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
